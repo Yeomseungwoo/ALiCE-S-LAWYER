@@ -1,0 +1,12 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="us.narin.aliceslawyer.fragments.DictNavFragment">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/dict_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>
+<!-- From: file:/Volumes/Sub%20Storage/Workspace/Alice'sLawyer/app/src/main/res/layout/fragment_lawyer_nav.xml -->

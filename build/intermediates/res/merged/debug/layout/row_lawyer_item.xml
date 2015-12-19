@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/lawyer_item_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lawyer_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="소요죄"
+            android:textColor="#424242"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lawyer_item_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="다중이 집합하여 폭행 · 협박 또는 손괴행위를 함으로써 성립하는 범죄이다(형법 제115조). 사회의 평온을 그 보호법익으로 한다. 다중의 집합을 요건으로 하는 필요적 공범(필요적 공범)이며, 군집범죄(群集犯..." />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line_divider" />
+    </LinearLayout>
+</LinearLayout><!-- From: file:/Volumes/Sub%20Storage/Workspace/Alice'sLawyer/app/src/main/res/layout/row_lawyer_item.xml -->

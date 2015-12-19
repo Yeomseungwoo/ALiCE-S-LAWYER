@@ -1,11 +1,11 @@
 package us.narin.aliceslawyer.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,27 +15,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
 
 import us.narin.aliceslawyer.R;
-import us.narin.aliceslawyer.adapter.NewsAdapter;
+import us.narin.aliceslawyer.fragments.DictNavFragment;
+import us.narin.aliceslawyer.fragments.LawyerFragment;
+import us.narin.aliceslawyer.fragments.LawyerNavFragment;
+import us.narin.aliceslawyer.fragments.NewsNavFragmnet;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String[] newsTabTitles= {"법원", "법무경찰", "현재군사법원", "국회법세처", "로스쿨", "로펌", "사법연수원"};
-    private NewsAdapter newsAdapter;
+    Toolbar toolbar;
+    public TabLayout newsTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TabLayout newsTab = (TabLayout)findViewById(R.id.news_tab);
+        newsTab = (TabLayout)findViewById(R.id.news_tab);
 
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setLogo(R.mipmap.ic_title);
@@ -58,23 +58,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageView navBackground = (ImageView)navigationView.findViewById(R.id.nav_bg);
-        try {
-            Glide.with(getApplicationContext()).load(R.drawable.nav_bg).into(navBackground);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        newsAdapter = new NewsAdapter(getSupportFragmentManager(),getApplicationContext());
-
-        ViewPager newsViewPager = (ViewPager)findViewById(R.id.news_vp);
-        newsViewPager.setAdapter(newsAdapter);
-
-        newsTab.setupWithViewPager(newsViewPager);
-
-        for (int i=0; i<newsTabTitles.length; i++){
-            newsTab.getTabAt(i).setText(newsTabTitles[i]);
-        }
+        setFragment(0);
 
     }
 
@@ -114,24 +98,50 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-//        if (id == R.id.nav_camara) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
+        switch (item.getItemId()){
+            case R.id.nav_raw_news:
+                item.setChecked(true);
+                setFragment(0);
+                break;
+            case R.id.nav_dict_raw:
+                item.setChecked(true);
+                setFragment(1);
+                break;
+            case R.id.nav_find_rawyer:
+                setFragment(2);
+                break;
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void setFragment(int position) {
+        FragmentManager fragmentManager;
+        FragmentTransaction fragmentTransaction;
+        switch (position) {
+            case 0:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                NewsNavFragmnet inboxFragment = new NewsNavFragmnet(getSupportFragmentManager());
+                fragmentTransaction.replace(R.id.content_fragment, inboxFragment);
+                fragmentTransaction.commit();
+                break;
+            case 1:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                DictNavFragment starredFragment = new DictNavFragment(getSupportFragmentManager());
+                fragmentTransaction.replace(R.id.content_fragment, starredFragment);
+                fragmentTransaction.commit();
+                break;
+            case 2:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                LawyerNavFragment lawyerNavFragment = new LawyerNavFragment(getSupportFragmentManager());
+                fragmentTransaction.replace(R.id.content_fragment, lawyerNavFragment);
+                fragmentTransaction.commit();
+                break;
+        }
     }
 }

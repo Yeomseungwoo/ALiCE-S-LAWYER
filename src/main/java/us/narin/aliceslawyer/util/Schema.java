@@ -5,6 +5,6 @@ package us.narin.aliceslawyer.util;
  */
 public class Schema {
 
-
+public static final String NEWS_ENDPOINT = "https://www.lawtimes.co.kr/Legal-News/Legal-News-List";
 
 }

@@ -23,7 +23,7 @@ public class NewsItemAdapter extends RecyclerView.Adapter<NewsItemViewHolder> {
     private List<NewsItemModel> itemModelList;
     private Context mContext;
 
-    public NewsItemAdapter(List<NewsItemModel> itemModelList, Context mContext){
+    public NewsItemAdapter(List<NewsItemModel> itemModelList, Context mContext) {
         this.itemModelList = itemModelList;
         this.mContext = mContext;
 
@@ -41,7 +41,9 @@ public class NewsItemAdapter extends RecyclerView.Adapter<NewsItemViewHolder> {
         holder.itemTitle.setText(itemModel.getNewsTitle());
         holder.itemSubtitle.setText(itemModel.getNewsSubtitle());
         holder.itemTime.setText(itemModel.getNewsTime());
-        Glide.with(mContext).load(itemModel.getNewsImgUrl()).into(holder.itemImg);
+        if (!itemModel.getNewsImgUrl().isEmpty())
+            Glide.with(mContext).load(itemModel.getNewsImgUrl()).into(holder.itemImg);
+        else holder.itemImg.setVisibility(View.GONE);
     }
 
     @Override
