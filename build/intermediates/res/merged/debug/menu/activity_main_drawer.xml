@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="ALICE's HOME">
+        <menu>
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_raw_news"
+                    android:icon="@drawable/menu_news"
+                    android:title="법률뉴스" />
+                <item
+                    android:id="@+id/nav_dict_raw"
+                    android:icon="@drawable/menu_dict"
+                    android:title="법률사전" />
+                <item
+                    android:id="@+id/nav_find_rawyer"
+                    android:icon="@drawable/menu_find_user"
+                    android:title="변호사 찾기" />
+                <item
+                    android:id="@+id/nav_rawyer_bracklist"
+                    android:icon="@drawable/menu_block"
+                    android:title="변호사 블랙리스트" />
+                <item
+                    android:id="@+id/nav_app_setting"
+                    android:icon="@drawable/menu_settings"
+                    android:title="애플리케이션 설정" />
+            </group>
+        </menu>
+    </item>
+
+</menu><!-- From: file:/Volumes/Sub%20Storage/Workspace/Alice'sLawyer/app/src/main/res/menu/activity_main_drawer.xml -->

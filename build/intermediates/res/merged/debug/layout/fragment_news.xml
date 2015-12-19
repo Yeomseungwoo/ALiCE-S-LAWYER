@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="us.narin.aliceslawyer.fragments.NewsFragment"
+    android:background="#eeeeee">
+
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/news_rv"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+
+</FrameLayout>
+<!-- From: file:/Volumes/Sub%20Storage/Workspace/Alice'sLawyer/app/src/main/res/layout/fragment_news.xml -->
